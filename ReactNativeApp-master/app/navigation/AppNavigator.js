@@ -1,18 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import * as Notifications from 'expo-notifications';
 
-import ListingEditScreen from '../screens/ListingEditScreen';
-import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigator";
+import FeedNavigator from "./FeedNavigator";
+import ListingEditScreen from "../screens/ListingEditScreen";
 import NewListingButton from "./NewListingButton";
 import routes from "./routes";
 
 const Tab = createBottomTabNavigator();
 
-const AppNavigator = () => (
-    <Tab.Navigator>
-       <Tab.Screen
+const AppNavigator = () => {
+
+    useEffect(() => {
+      registerForPushNotifications();
+    }, []);
+  
+    const registerForPushNotifications = async () =>{
+      const { status: existingStatus } = await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus;
+  
+      if (existingStatus !== 'granted') {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
+      }
+  
+      if (finalStatus !== 'granted') {
+        console.log('Permission not granted for notifications');
+        return;
+      }
+  
+      try {
+        const token = await Notifications.getExpoPushTokenAsync();
+        console.log(token);
+  
+      } catch (error) {
+        console.log('Error getting a push token', error);
+      }
+    }
+  return(
+  <Tab.Navigator>
+    <Tab.Screen
       name="Feed"
       component={FeedNavigator}
       options={{
@@ -21,15 +50,15 @@ const AppNavigator = () => (
         ),
       }}
     />
-      <Tab.Screen
+    <Tab.Screen
       name="ListingEdit"
       component={ListingEditScreen}
       options={({ navigation }) => ({
         tabBarButton: () => (
-            <NewListingButton
-              onPress={() => navigation.navigate(routes.LISTING_EDIT)}
-            />
-          ),
+          <NewListingButton
+            onPress={() => navigation.navigate(routes.LISTING_EDIT)}
+          />
+        ),
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons
             name="plus-circle"
@@ -39,7 +68,7 @@ const AppNavigator = () => (
         ),
       })}
     />
-       <Tab.Screen
+    <Tab.Screen
       name="Account"
       component={AccountNavigator}
       options={{
@@ -48,7 +77,8 @@ const AppNavigator = () => (
         ),
       }}
     />
-    </Tab.Navigator>
-);
+  </Tab.Navigator>
+  );
+};
 
 export default AppNavigator;
