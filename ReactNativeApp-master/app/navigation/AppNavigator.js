@@ -8,6 +8,7 @@ import FeedNavigator from "./FeedNavigator";
 import ListingEditScreen from "../screens/ListingEditScreen";
 import NewListingButton from "./NewListingButton";
 import routes from "./routes";
+import expoPushTokensApi from "../api/expoPushTokens";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +34,8 @@ const AppNavigator = () => {
   
       try {
         const token = await Notifications.getExpoPushTokenAsync();
-        console.log(token);
+        expoPushTokensApi.register(token.data);
+        console.log(token.data);
   
       } catch (error) {
         console.log('Error getting a push token', error);
