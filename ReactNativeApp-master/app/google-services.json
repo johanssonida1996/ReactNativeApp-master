@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "80758141064",
+    "project_id": "test-260b7",
+    "storage_bucket": "test-260b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80758141064:android:31b506e4d6de4b1d8cef3d",
+        "android_client_info": {
+          "package_name": "com.ida.DoneWithIt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80758141064-hbj7inogmh0rasepac4p7nenfpkbbf4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCGwfifAd350Yn9-qg5HFeIC1s8EvMsi8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80758141064-hbj7inogmh0rasepac4p7nenfpkbbf4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

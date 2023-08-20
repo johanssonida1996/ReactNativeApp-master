@@ -25,6 +25,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package_name": "com.ida.DoneWithIt",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -34,6 +36,9 @@
       "favicon": "./app/assets/favicon.png"
     },
     "description": "A marketplace for selling the stuff you don't need anymore",
+    "notification":{
+      "iosDisplayInForeground": true
+    },
     "extra": {
       "eas": {
         "projectId": "285338f3-eeb2-459a-b69f-0a20d25aafd8"
