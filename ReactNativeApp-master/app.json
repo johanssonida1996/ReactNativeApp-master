@@ -36,16 +36,27 @@
       "favicon": "./app/assets/favicon.png"
     },
     "description": "A marketplace for selling the stuff you don't need anymore",
-    "notification":{
+    "notification": {
       "iosDisplayInForeground": true
     },
     "extra": {
       "eas": {
         "projectId": "285338f3-eeb2-459a-b69f-0a20d25aafd8"
+      },
+      "bugsnag": {
+        "apiKey": "b3c1b81c07102d948948b5464e98daba"
       }
     },
     "runtimeVersion": {
       "policy": "sdkVersion"
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "@bugsnag/expo/hooks/post-publish.js",
+          "config": {}
+        }
+      ]
     }
   }
 }

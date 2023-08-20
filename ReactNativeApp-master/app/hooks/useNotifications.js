@@ -27,7 +27,6 @@ export default useNotifications = (notificationListener) =>{
       try {
         const token = await Notifications.getExpoPushTokenAsync();
         expoPushTokensApi.register(token.data);
-        console.log(token.data);
   
       } catch (error) {
         console.log('Error getting a push token', error);
